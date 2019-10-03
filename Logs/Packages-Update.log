@@ -41,3 +41,14 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
+
+=== Thu Oct  3 12:05:38 2019
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.cinemachine@2.2.9
+  com.unity.connect.share@1.0.4-preview
+  com.unity.learn.iet-framework@0.1.17-preview
+  com.unity.postprocessing@2.1.4
