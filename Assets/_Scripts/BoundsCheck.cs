@@ -9,13 +9,21 @@ public class BoundsCheck : MonoBehaviour
 
     public float radius = 1f;
 
+    public bool keepOnScreen = true;
+
 
 
     [Header("Set Dynamically")]
 
+    public bool isOnScreen = true;
+
     public float camWidth;
 
     public float camHeight;
+
+    [HideInInspector]
+
+    public bool offRight, offLeft, offUp, offDown;
 
 
 
@@ -33,7 +41,11 @@ public class BoundsCheck : MonoBehaviour
     void LateUpdate()
     {                                                     // d
 
-        Vector3 pos = transform.position;
+        Vector3 pos = transform.position;                                   // c
+
+        isOnScreen = true;
+
+        offRight = offLeft = offUp = offDown = false;
 
 
 
@@ -41,6 +53,8 @@ public class BoundsCheck : MonoBehaviour
         {
 
             pos.x = camWidth - radius;
+
+            offRight = true;
 
         }
 
@@ -52,6 +66,8 @@ public class BoundsCheck : MonoBehaviour
 
             pos.x = -camWidth + radius;
 
+            offLeft = true;
+
         }
 
 
@@ -61,6 +77,8 @@ public class BoundsCheck : MonoBehaviour
 
             pos.y = camHeight - radius;
 
+            offUp = true;
+
         }
 
         if (pos.y < -camHeight + radius)
@@ -68,11 +86,26 @@ public class BoundsCheck : MonoBehaviour
 
             pos.y = -camHeight + radius;
 
+            offDown = true;
+
         }
 
 
 
-        transform.position = pos;
+        isOnScreen = !(offRight || offLeft || offUp || offDown);
+
+
+
+        if (keepOnScreen && !isOnScreen)
+        {                                // f
+
+            transform.position = pos;                                       // g
+
+            isOnScreen = true;
+
+            offRight = offLeft = offUp = offDown = false;
+
+        }
 
     }
 
