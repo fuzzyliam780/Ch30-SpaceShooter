@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
 
 
 
-        if (bndCheck != null && !bndCheck.offDown)
+        if (bndCheck != null && bndCheck.offDown)
         {                      // a
 
             // We're off the bottom, so destroy this GameObject            // b
